@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10);
 const secret = "asdfe45we45w345wegw345werjktjwertkj";
 const jwt = require("jsonwebtoken");
-
+const cookieParser = require("cookie-parser");
 
 
 const app=express();
@@ -14,6 +14,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 
 app.use(express.json());
+app.use(cookieParser());
 mongoose.set("strictQuery", false);
 
 mongoose.connect(
@@ -60,5 +61,13 @@ app.post('/login', async (req,res) => {
   }
 
 });
+
+
+app.get("/profile", (req, res) => {
+  res.json(req.cookies);  
+});
+
 app.listen(4000);
 //mongodb+srv://sameerdastagir5:Sameer@blog0.q2mg5vs.mongodb.net/?retryWrites=true&w=majority
+
+

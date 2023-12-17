@@ -15,6 +15,7 @@ export default function LoginPage() {
       headers: {'Content-Type':'application/json'},
       credentials: 'include',
     });
+
     if (response.ok) {
       response.json().then(userInfo => {
        
@@ -24,9 +25,12 @@ export default function LoginPage() {
       alert('wrong credentials');
     }
   }
+
  if (redirect) {
    return <Navigate to={"/"} />;
  }
+
+ 
 
 
 
