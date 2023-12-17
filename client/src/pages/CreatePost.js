@@ -27,7 +27,7 @@ const modules={
    data.set("summary", summary);
    data.set("content", content);
  data.set("file", files[0]);
- 
+ console.log("pk")
    ev.preventDefault();
    const response = await fetch("http://localhost:4000/post", {
      method: "POST",

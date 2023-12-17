@@ -9,6 +9,9 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/" });
+const Post = require("./models/Post");
+const fs = require("fs");
+
 
 
 
@@ -79,20 +82,20 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
   const newPath = path + "." + ext;
   fs.renameSync(path, newPath);
 
-  const { token } = req.cookies;
-  jwt.verify(token, secret, {}, async (err, info) => {
-    if (err) throw err;
+
+
     const { title, summary, content } = req.body;
     const postDoc = await Post.create({
       title,
       summary,
       content,
-      cover: newPath,
-      author: info.id,
+      cover: newPath
+     
     });
     res.json(postDoc);
   });
-});
+
+  
 
 
 
