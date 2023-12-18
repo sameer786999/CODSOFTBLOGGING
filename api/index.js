@@ -93,6 +93,7 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
      
     });
     res.json(postDoc);
+    
   });
 
   
