@@ -1,4 +1,4 @@
-export default function Post(){
+export default function Post({title,summary,content,cover,createdAt}){
     return (
       <main>
        
@@ -11,26 +11,13 @@ export default function Post(){
           </div>
 
           <div className="texts">
-            <h2>A Scenario</h2>
+            <h2>{title}</h2>
             <p className="info">
               <a className="author">Sam S</a>
-              <time>2023.12.16 10:20</time>
+              <time>{createdAt}</time>
             </p>
             <p className="summary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quam
-              nulla quas libero mollitia impedit enim qui illo hic ad omnis,
-              officiis, quod autem magnam vel architecto quae error laudantium!
-              Dolorum odit ratione quos voluptatum ducimus velit, illum cumque
-              maiores quasi commodi possimus laudantium cum eveniet, aperiam
-              adipisci voluptas eligendi consequuntur repudiandae vel? Autem
-              exercitationem, possimus fugit cum inventore unde? Quis labore
-              assumenda quo nesciunt deleniti voluptates quos repellat
-              exercitationem aut expedita nostrum facere, perferendis, porro
-              alias non molestiae ullam culpa! Ut et itaque natus error labore
-              eaque? Fugiat, saepe. Quidem explicabo sed reprehenderit illo
-              minus molestiae obcaecati, quos nobis nisi consequatur quo ab,
-              dolorem fugit non est esse soluta! Possimus quasi soluta
-              consequuntur autem, nesciunt fugiat vel harum sequi!
+             {summary}
             </p>
           </div>
         </div>
