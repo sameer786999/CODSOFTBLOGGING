@@ -13,8 +13,6 @@ const Post = require("./models/Post");
 const fs = require("fs");
 
 
-
-
 const app=express();
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
@@ -75,6 +73,7 @@ app.post("/logout", (req, res) => {
 });
 
 
+
 app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
   const { originalname, path } = req.file;
   const parts = originalname.split(".");
@@ -102,17 +101,25 @@ app.post("/post", uploadMiddleware.single("file"), async (req, res) => {
 
   });
 
-  
-app.get("/post", async (req, res) => {
-  res.json(await Post.find() )  
-  });
+ app.get("/post", async (req, res) => {
+   res.json(
+     await Post.find()
+    
+       .sort({ createdAt: -1 })
+       .limit(20)
+   );
+ });
+
+ 
+
+ 
 
 
 
-  
 
 
 app.listen(4000);
 //mongodb+srv://sameerdastagir5:Sameer@blog0.q2mg5vs.mongodb.net/?retryWrites=true&w=majority
+
 
 
